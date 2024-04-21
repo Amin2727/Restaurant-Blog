@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+	<div style="font-family:'Shabnam'">
+		<!-- Start All Pages -->
+			<div class="all-page-title page-breadcrumb">
+				<div class="container text-center">
+					<div class="row">
+						<div class="col-lg-12">
+							<h1 style="font-family:'Shabnam'">بلاگ</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- End All Pages -->
+			
+		<!-- Start blog -->
+			<div class="blog-box">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="heading-title text-center">
+								<h2 style="font-family:'Shabnam'">لیست پست ها</h2>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						{% for blog in blogs %}
+							<div class="col-lg-4 col-md-6 col-12">
+								<div class="blog-box-inner">
+									<div class="blog-img-box">
+										<img class="img-fluid" src="{{ blog.image.url }}" style="height:530px" alt="image">
+									</div>
+									<div class="blog-detail">
+										<h4>{{ blog.title }}</h4>
+										<ul>
+											<li><span>نوشته شده توسط {{ blog.author }}</span></li>
+											<li>|</li>
+											<li><span>{{ blog.created_at|date:"Y b d" }}</span></li>
+										</ul>
+										<p dir="rtl">{{ blog.content|safe|truncatewords:80 }}</p>
+										<a class="btn btn-lg btn-circle btn-outline-new-white" href="{% url 'blog:blog_detail' blog.id %}">ادامه ی مطلب</a>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		<!-- End blog -->
+
+		
+		<!-- Start Contact info -->
+			<div class="contact-imfo-box">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4">
+							<i class="fa fa-volume-control-phone"></i>
+							<div class="overflow-hidden">
+								<h4>تلفن</h4>
+								<p class="lead">
+									۰۹۰۳۷۰۸۹۷۹۴
+								</p>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<i class="fa fa-envelope"></i>
+							<div class="overflow-hidden">
+								<h4>ایمیل</h4>
+								<p class="lead">
+									amingit2022@gmail.com
+								</p>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<i class="fa fa-map-marker"></i>
+							<div class="overflow-hidden">
+								<h4>آدرس</h4>
+								<p class="lead">
+									تهران، شهران شمالی
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- End Contact info -->
+	</div>
+{% endblock %}

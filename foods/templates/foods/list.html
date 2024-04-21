@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div style="font-family:'Shabnam'">
+            <!-- Start slides -->
+            <div id="slides" class="cover-slides">
+                <ul class="slides-container">
+                    <li class="text-center">
+                        <img src="{% static 'images/slider-01.jpg' %}" alt="">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h1 style="font-family:'Shabnam'" class="m-b-20"><strong>به رستوران ما<br> خوش آمدید</strong></h1>
+                                    <p><a class="btn btn-lg btn-circle btn-outline-new-white" href="{% url 'reservation:reserve' %}">رزرو</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="text-center">
+                        <img src="{% static 'images/slider-02.jpg' %}" alt="">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h1 style="font-family:'Shabnam'" class="m-b-20"><strong>به رستوران ما<br> خوش آمدید</strong></h1>
+                                    <p><a class="btn btn-lg btn-circle btn-outline-new-white" href="{% url 'reservation:reserve' %}">رزرو</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="text-center">
+                        <img src="{% static 'images/slider-03.jpg' %}" alt="">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h1 style="font-family:'Shabnam'" class="m-b-20"><strong>به رستوران ما<br> خوش آمدید</strong></h1>
+                                    <p><a class="btn btn-lg btn-circle btn-outline-new-white" href="{% url 'reservation:reserve' %}">رزرو</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="slides-navigation">
+                    <a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                    <a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <!-- End slides -->
+            
+            <!-- Start About -->
+            <div class="about-section-box">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <img src="{% static 'images/about-img.jpg' %}" alt="" class="img-fluid">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 text-center">
+                            <div class="inner-column">
+                                <h1 style="font-family:'Shabnam'">به رستوران ما<span> خوش آمدید</span></h1>
+                                <h4>معرفی رستوران</h4>
+                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد کتابهای زیادی در شصت و سه درصد گذشته حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد </p>
+                                <a class="btn btn-lg btn-circle btn-outline-new-white" href="{% url 'reservation:reserve' %}">رزرو</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End About -->
+            
+            <!-- Start QT -->
+            <div class="qt-box qt-background">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 ml-auto mr-auto text-left">
+                            <p style="font-family:'Shabnam'; direction:rtl" class="lead text-dark bg-warning">
+                                "اگر شما کسی نیستید که آشپزی می‌کند، از راه دور بمانید و از سرآشپز تعریف کنید."
+                            </p>
+                            <span class="lead text-dark bg-warning">مایکل استرهان</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End QT -->
+            
+            <!-- Start Menu -->
+            <div class="menu-box">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="heading-title text-center">
+                                <h2 style="font-family:'Shabnam'">منوی خاص</h2>
+                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="special-menu text-center">
+                                <div class="button-group filter-button-group">
+                                    <button class="active" data-filter="*">همه</button>
+                                    <button data-filter=".drinks">نوشیدنی ها</button>
+                                    <button data-filter=".lunch">ناهار</button>
+                                    <button data-filter=".dinner">شام</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        
+                    <div class="row special-list">
+                        {% for food in foods %}
+                            <a href="{% url 'foods:detail' food.id %}">
+                                <div class="col-lg-4 col-md-6 special-grid {{food.type_food}}">
+                                    <div class="gallery-single fix">
+                                        <img src="{{ food.photo.url }}" width="200px"; height="200px"class="img-fluid" alt="Image">
+                                        <div class="why-text">
+                                            <h4>{{ food.name }}</h4>
+                                            <p>{{ food.description }}</p>
+                                            <h2>{{ food.price }} تومان</h2>
+                                        </div>
+                                    </div>
+                                </div>		
+                            </a>
+                        {% endfor %}		
+                    </div>
+                </div>
+            </div>
+            <!-- End Menu -->
+            
+            
+            <!-- Start Contact info -->
+            <div class="contact-imfo-box">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <i class="fa fa-volume-control-phone"></i>
+                            <div class="overflow-hidden">
+                                <h4>تلفن</h4>
+                                <p class="lead">
+                                    ۰۹۰۳۷۰۸۹۷۹۴
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <i class="fa fa-envelope"></i>
+                            <div class="overflow-hidden">
+                                <h4>ایمیل</h4>
+                                <p class="lead">
+                                    amingit2022@gmail.com
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <i class="fa fa-map-marker"></i>
+                            <div class="overflow-hidden">
+                                <h4>آدرس</h4>
+                                <p class="lead">
+                                    تهران، شهران شمالی
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Contact info -->
+    </div>
+{% endblock %}
